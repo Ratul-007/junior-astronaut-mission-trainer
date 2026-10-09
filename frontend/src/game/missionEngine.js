@@ -177,7 +177,7 @@ export function createMissionState(environment = 'Moon') {
 function getOutcome(resources) {
   if (resources.lifeSupport <= 0 || resources.radiation <= 0) return 'failed';
   if (resources.water <= 0 || resources.food <= 0 || resources.power <= 0) return 'failed';
-  if (Object.values(resources).some((value) => value <= 5)) return 'critical';
+  // Low-but-positive reserves trigger alerts; the mission remains playable.
   return 'active';
 }
 
